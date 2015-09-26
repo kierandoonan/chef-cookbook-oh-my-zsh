@@ -20,7 +20,8 @@
 include_recipe "git"
 include_recipe "zsh"
 
-users = search( :users, "shell:*zsh AND NOT action:remove" ) + node[:ohmyzsh][:additional_users]
+users = search( :users, "shell:*zsh AND NOT action:remove" ) 
+users += node[:ohmyzsh][:additional_users].map{ |id| {'id' => id }}
 
 users.each do |u|
   user_id = u["id"]
