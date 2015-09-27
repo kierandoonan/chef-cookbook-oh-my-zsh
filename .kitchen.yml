@@ -10,7 +10,7 @@ platforms:
 - name: ubuntu-14.04
   run_list:
   - recipe[apt]
-- name: centos-7
+- name: centos-7.0
   run_list:
   - recipe[yum]
 - name: centos-6.7
@@ -23,4 +23,7 @@ suites:
   - recipe[chef-solo-search]
   - recipe[users::sysadmins]
   - recipe[oh-my-zsh]
-  attributes: {}
+  attributes:
+    ohmyzsh: 
+    additional_users:
+      - vagrant
